@@ -33,5 +33,8 @@ ElementV1::~ElementV1() {}
 
 ElementV2::~ElementV2() {}
 
+
+ElementV3::~ElementV3() {}
+
 } // namespace Epix
 } // namespace Psana

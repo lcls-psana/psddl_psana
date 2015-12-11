@@ -11,6 +11,10 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag: V00-06-19
+2015-12-10 David Schneider
+- update to pdsdata 8.4.6 with modified Epix::Config100aV2 JIRA PSAS-198
+
 Tag: V00-06-18
 2015-6-26 David Schneider
 - update to pdsdata 8.3.1 with Epix::Config100aV2, JIRA PSAS-166

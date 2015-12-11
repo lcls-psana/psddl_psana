@@ -470,8 +470,11 @@ public:
   enum { Version = 2 /**< XTC type version number */ };
   virtual ~Config100aV2();
   virtual uint32_t version() const = 0;
-  virtual uint32_t runTrigDelay() const = 0;
-  virtual uint32_t daqTrigDelay() const = 0;
+  virtual uint32_t usePgpEvr() const = 0;
+  virtual uint32_t evrRunCode() const = 0;
+  virtual uint32_t evrDaqCode() const = 0;
+  virtual uint32_t evrRunTrigDelay() const = 0;
+  virtual uint32_t epixRunTrigDelay() const = 0;
   virtual uint32_t dacSetting() const = 0;
   virtual uint8_t asicGR() const = 0;
   virtual uint8_t asicAcq() const = 0;
@@ -500,6 +503,10 @@ public:
   virtual uint32_t adcClkHalfT() const = 0;
   virtual uint32_t asicR0Width() const = 0;
   virtual uint32_t adcPipelineDelay() const = 0;
+  virtual uint32_t adcPipelineDelay0() const = 0;
+  virtual uint32_t adcPipelineDelay1() const = 0;
+  virtual uint32_t adcPipelineDelay2() const = 0;
+  virtual uint32_t adcPipelineDelay3() const = 0;
   virtual uint16_t SyncWidth() const = 0;
   virtual uint16_t SyncDelay() const = 0;
   virtual uint32_t prepulseR0Width() const = 0;
@@ -601,6 +608,32 @@ public:
   virtual ndarray<const uint16_t, 2> frame() const = 0;
   virtual ndarray<const uint16_t, 2> calibrationRows() const = 0;
   virtual ndarray<const uint16_t, 2> environmentalRows() const = 0;
+  virtual ndarray<const uint16_t, 1> temperatures() const = 0;
+  virtual uint32_t lastWord() const = 0;
+};
+
+/** @class ElementV3
+
+  
+*/
+
+class Config100aV1;
+class Config100aV2;
+
+class ElementV3 {
+public:
+  enum { TypeId = Pds::TypeId::Id_EpixElement /**< XTC type ID value (from Pds::TypeId class) */ };
+  enum { Version = 3 /**< XTC type version number */ };
+  virtual ~ElementV3();
+  virtual uint8_t vc() const = 0;
+  virtual uint8_t lane() const = 0;
+  virtual uint16_t acqCount() const = 0;
+  virtual uint32_t frameNumber() const = 0;
+  virtual uint32_t ticks() const = 0;
+  virtual uint32_t fiducials() const = 0;
+  virtual ndarray<const uint16_t, 2> frame() const = 0;
+  virtual ndarray<const uint16_t, 2> calibrationRows() const = 0;
+  virtual ndarray<const uint32_t, 2> environmentalRows() const = 0;
   virtual ndarray<const uint16_t, 1> temperatures() const = 0;
   virtual uint32_t lastWord() const = 0;
 };
