@@ -7,6 +7,12 @@
 namespace Psana {
 namespace UsdUsb {
 
+FexConfigV1::~FexConfigV1() {}
+
+
+FexDataV1::~FexDataV1() {}
+
+
 ConfigV1::~ConfigV1() {}
 
 std::ostream& operator<<(std::ostream& str, UsdUsb::ConfigV1::Count_Mode enval) {

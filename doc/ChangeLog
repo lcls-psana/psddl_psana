@@ -11,6 +11,10 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag: V00-06-24
+2016-4-4 David Schneider
+- update to pdsdata 8.6.7 with UsdUsb::FexConfigV1,FexDataV1, and Generic1D::ConfigV0,DataV0
+
 Tag: V00-06-23
 2016-2-5 David Schneider
 - update to pdsdata 8.6.1 with Andor3d::FrameV1 (and ConfigV1) JIRA PSAS-214

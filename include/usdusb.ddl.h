@@ -11,6 +11,45 @@
 namespace Psana {
 namespace UsdUsb {
 
+/** @class FexConfigV1
+
+  Class for creating a FexData for an encoder - takes an offset and scale.
+*/
+
+
+class FexConfigV1 {
+public:
+  enum { TypeId = Pds::TypeId::Id_UsdUsbFexConfig /**< XTC type ID value (from Pds::TypeId class) */ };
+  enum { Version = 1 /**< XTC type version number */ };
+  enum { NCHANNELS = 4 };
+  enum { NAME_CHAR_MAX = 48 };
+  virtual ~FexConfigV1();
+  /** Offset (in counts) to apply to raw encoder counts */
+  virtual ndarray<const int32_t, 1> offset() const = 0;
+  /** Scale factor for converting encoder counts to units */
+  virtual ndarray<const double, 1> scale() const = 0;
+  /** Descriptive name for each channel */
+  virtual const char* name(uint32_t i0) const = 0;
+  /** Method which returns the shape (dimensions) of the data returned by name() method. */
+  virtual std::vector<int> name_shape() const = 0;
+};
+
+/** @class FexDataV1
+
+  Class for holding the encoder value after application of an offset and scale.
+*/
+
+
+class FexDataV1 {
+public:
+  enum { TypeId = Pds::TypeId::Id_UsdUsbFexData /**< XTC type ID value (from Pds::TypeId class) */ };
+  enum { Version = 1 /**< XTC type version number */ };
+  enum { Encoder_Inputs = 4 };
+  virtual ~FexDataV1();
+  /** Corrected encoder value = (raw_count + offset) * scale */
+  virtual ndarray<const double, 1> encoder_values() const = 0;
+};
+
 /** @class ConfigV1
 
   
