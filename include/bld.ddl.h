@@ -52,8 +52,8 @@ private:
 
   Six energy measurements from Front End Enclosure Gas Detector.
    PV names: GDET:FEE1:241:ENRC, GDET:FEE1:242:ENRC, 
-	GDET:FEE1:361:ENRC, GDET:FEE1:362:ENRC, 
-	GDET:FEE1:363:ENRC, and GDET:FEE1:364:ENRC 
+    GDET:FEE1:361:ENRC, GDET:FEE1:362:ENRC, 
+    GDET:FEE1:363:ENRC, and GDET:FEE1:364:ENRC 
    Each pair of methods (e.g. f_11_ENRC(), f_12_ENRC() contains
    identical measurements using two different phototubes.  "11" and "12"
    are before the gas attenuation.  "21" and "22" are after gas
@@ -719,6 +719,27 @@ private:
 };
 std::ostream& operator<<(std::ostream& str, Bld::BldDataEBeamV7::DamageMask enval);
 
+/** @class BldDataEOrbitsV0
+
+  Orbit parameters.
+*/
+
+
+class BldDataEOrbitsV0 {
+public:
+  enum { TypeId = Pds::TypeId::Id_EOrbits /**< XTC type ID value (from Pds::TypeId class) */ };
+  enum { Version = 0 /**< XTC type version number */ };
+  virtual ~BldDataEOrbitsV0();
+  /** Number of BPM in each array */
+  virtual uint32_t nBPMS() const = 0;
+  /** Array of BPM X values (mm) */
+  virtual ndarray<const double, 1> fBPM_X() const = 0;
+  /** Array of BPM Y values (mm) */
+  virtual ndarray<const double, 1> fBPM_Y() const = 0;
+  /** Array of BPM TMIT values (Nel) */
+  virtual ndarray<const double, 1> fBPM_TMIT() const = 0;
+};
+
 /** @class BldDataPhaseCavity
 
   PV names: UND:R02:IOC:16:BAT:FitTime1, UND:R02:IOC:16:BAT:FitTime2,
@@ -927,8 +948,8 @@ public:
 /** @class BldDataSpectrometerV1
 
   Structure which contains image projections and fit parameters for spectrometers. 
-	Changes from V0 include extending size of hproj, removal of vproj,
-	 and addition of fit parameters.
+    Changes from V0 include extending size of hproj, removal of vproj,
+     and addition of fit parameters.
 */
 
 

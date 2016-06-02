@@ -365,6 +365,9 @@ std::ostream& operator<<(std::ostream& str, Bld::BldDataEBeamV7::DamageMask enva
   return str << val;
 }
 
+BldDataEOrbitsV0::~BldDataEOrbitsV0() {}
+
+
 BldDataIpimbV0::~BldDataIpimbV0() {}
 
 
