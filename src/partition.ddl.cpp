@@ -13,5 +13,8 @@ Source::Source(const Pds::Src& arg__src, uint32_t arg__group)
 
 ConfigV1::~ConfigV1() {}
 
+
+ConfigV2::~ConfigV2() {}
+
 } // namespace Partition
 } // namespace Psana

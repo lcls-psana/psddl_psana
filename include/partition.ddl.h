@@ -48,6 +48,37 @@ public:
   /** Source configuration objects */
   virtual ndarray<const Partition::Source, 1> sources() const = 0;
 };
+
+/** @class ConfigV2
+
+  
+*/
+
+
+class ConfigV2 {
+public:
+  enum { TypeId = Pds::TypeId::Id_PartitionConfig /**< XTC type ID value (from Pds::TypeId class) */ };
+  enum { Version = 2 /**< XTC type version number */ };
+  virtual ~ConfigV2();
+  /** Number of words for the bit mask */
+  virtual uint32_t numWords() const = 0;
+  /** Number of source definitions */
+  virtual uint32_t numSources() const = 0;
+  /** Mask of requested BLD */
+  virtual ndarray<const uint32_t, 1> bldMask() const = 0;
+  /** Source configuration objects */
+  virtual ndarray<const Partition::Source, 1> sources() const = 0;
+  /** Returns the total number of bits in the mask */
+  virtual uint32_t numBldMaskBits() const = 0;
+  /** Returns non-zero if all bits in the mask are unset, zero otherwise. */
+  virtual uint32_t bldMaskIsZero() const = 0;
+  /** Returns non-zero if any bits in the mask are set, zero otherwise. */
+  virtual uint32_t bldMaskIsNotZero() const = 0;
+  /** Returns non-zero if the bit cooresponding to iBit in the word is set, zero otherwise. */
+  virtual uint32_t bldMaskHasBitSet(uint32_t iBit) const = 0;
+  /** Returns non-zero if the bit cooresponding to iBit in the word is unset, zero otherwise. */
+  virtual uint32_t bldMaskHasBitClear(uint32_t iBit) const = 0;
+};
 } // namespace Partition
 } // namespace Psana
 #endif // PSANA_PARTITION_DDL_H
