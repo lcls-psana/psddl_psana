@@ -13,6 +13,7 @@
 #include "psddl_psana/ipimb.ddl.h"
 #include "psddl_psana/lusi.ddl.h"
 #include "psddl_psana/pulnix.ddl.h"
+#include "psddl_psana/usdusb.ddl.h"
 namespace Psana {
 namespace Bld {
 
@@ -823,6 +824,24 @@ public:
   virtual const Camera::FrameV1& frame() const = 0;
 };
 
+/** @class BldDataUsdUsbV1
+
+  Combined structure which includes UsdUsb.ConfigV1, UsdUsb.FexConfigV1, UsdUsb.DataV1, and
+            UsdUsb.FexDataV1 objects.
+*/
+
+
+class BldDataUsdUsbV1 {
+public:
+  enum { TypeId = Pds::TypeId::Id_SharedUsdUsb /**< XTC type ID value (from Pds::TypeId class) */ };
+  enum { Version = 1 /**< XTC type version number */ };
+  virtual ~BldDataUsdUsbV1();
+  virtual const UsdUsb::ConfigV1& config() const = 0;
+  virtual const UsdUsb::FexConfigV1& fexConfig() const = 0;
+  virtual const UsdUsb::DataV1& data() const = 0;
+  virtual const UsdUsb::FexDataV1& fexData() const = 0;
+};
+
 /** @class BldDataGMDV0
 
   Gas Monitor Detector data.
@@ -1011,6 +1030,32 @@ public:
   virtual uint32_t numChannels() const = 0;
   /** Array of voltage values were each entry represents a channel of the analog input device. */
   virtual ndarray<const double, 1> channelVoltages() const = 0;
+};
+
+/** @class BldDataBeamMonitorV1
+
+  Intensity and Position Measurements
+*/
+
+
+class BldDataBeamMonitorV1 {
+public:
+  enum { TypeId = Pds::TypeId::Id_BeamMonitorBldData /**< XTC type ID value (from Pds::TypeId class) */ };
+  enum { Version = 1 /**< XTC type version number */ };
+  enum { NCHANNELS = 16 };
+  virtual ~BldDataBeamMonitorV1();
+  /** Value of Total Intensity, in J. */
+  virtual double TotalIntensity() const = 0;
+  /** Value of X Position, in m. */
+  virtual double X_Position() const = 0;
+  /** Value of Y Position, in m. */
+  virtual double Y_Position() const = 0;
+  /** Peak Amplitude of Channel */
+  virtual double peakA() const = 0;
+  /** Location of Peak Amplitude of Channel */
+  virtual double peakT() const = 0;
+  /** Value of Channel Intensity, in J. */
+  virtual ndarray<const double, 1> Channel_Intensity() const = 0;
 };
 } // namespace Bld
 } // namespace Psana

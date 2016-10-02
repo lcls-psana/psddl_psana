@@ -377,6 +377,9 @@ BldDataIpimbV1::~BldDataIpimbV1() {}
 BldDataPimV1::~BldDataPimV1() {}
 
 
+BldDataUsdUsbV1::~BldDataUsdUsbV1() {}
+
+
 BldDataGMDV0::~BldDataGMDV0() {}
 
 
@@ -396,6 +399,9 @@ BldDataSpectrometerV1::~BldDataSpectrometerV1() {}
 
 
 BldDataAnalogInputV1::~BldDataAnalogInputV1() {}
+
+
+BldDataBeamMonitorV1::~BldDataBeamMonitorV1() {}
 
 } // namespace Bld
 } // namespace Psana
