@@ -1051,11 +1051,9 @@ public:
   /** Value of Y Position, in m. */
   virtual double Y_Position() const = 0;
   /** Peak Amplitude of Channel */
-  virtual double peakA() const = 0;
+  virtual ndarray<const double, 1> peakA() const = 0;
   /** Location of Peak Amplitude of Channel */
-  virtual double peakT() const = 0;
-  /** Value of Channel Intensity, in J. */
-  virtual ndarray<const double, 1> Channel_Intensity() const = 0;
+  virtual ndarray<const uint16_t, 1> peakT() const = 0;
 };
 } // namespace Bld
 } // namespace Psana
