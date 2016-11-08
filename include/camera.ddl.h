@@ -139,6 +139,42 @@ public:
   virtual double minor_axis_width() const = 0;
   virtual double major_axis_tilt() const = 0;
 };
+
+/** @class ControlsCameraConfigV1
+
+  Class containing configuration data for cameras recorded by the controls recorder.
+*/
+
+
+class ControlsCameraConfigV1 {
+public:
+  enum { TypeId = Pds::TypeId::Id_ControlsCameraConfig /**< XTC type ID value (from Pds::TypeId class) */ };
+  enum { Version = 1 /**< XTC type version number */ };
+  enum { DESC_CHAR_MAX = 48 };
+  enum ColorMode {
+    Mono,
+    Bayer,
+    RGB1,
+  };
+  virtual ~ControlsCameraConfigV1();
+  /** Number of pixels in a row. */
+  virtual uint32_t width() const = 0;
+  /** Number of pixels in a column. */
+  virtual uint32_t height() const = 0;
+  /** Number of bits per pixel. */
+  virtual uint32_t depth() const = 0;
+  /** The color mode of the camera. */
+  virtual Camera::ControlsCameraConfigV1::ColorMode color_mode() const = 0;
+  /** The configured exposure time of the camera in seconds. */
+  virtual double exposure_time() const = 0;
+  /** Camera gain value. */
+  virtual double gain() const = 0;
+  /** The manufacturer of the camera. */
+  virtual const char* manufacturer() const = 0;
+  /** The model name of the camera. */
+  virtual const char* model() const = 0;
+};
+std::ostream& operator<<(std::ostream& str, Camera::ControlsCameraConfigV1::ColorMode enval);
 } // namespace Camera
 } // namespace Psana
 #endif // PSANA_CAMERA_DDL_H

@@ -55,5 +55,25 @@ FrameV1::~FrameV1() {}
 
 TwoDGaussianV1::~TwoDGaussianV1() {}
 
+
+ControlsCameraConfigV1::~ControlsCameraConfigV1() {}
+
+std::ostream& operator<<(std::ostream& str, Camera::ControlsCameraConfigV1::ColorMode enval) {
+  const char* val;
+  switch (enval) {
+  case Camera::ControlsCameraConfigV1::Mono:
+    val = "Mono";
+    break;
+  case Camera::ControlsCameraConfigV1::Bayer:
+    val = "Bayer";
+    break;
+  case Camera::ControlsCameraConfigV1::RGB1:
+    val = "RGB1";
+    break;
+  default:
+    return str << "ColorMode(" << int(enval) << ")";
+  }
+  return str << val;
+}
 } // namespace Camera
 } // namespace Psana
