@@ -123,6 +123,29 @@ public:
 std::ostream& operator<<(std::ostream& str, Jungfrau::ConfigV2::GainMode enval);
 std::ostream& operator<<(std::ostream& str, Jungfrau::ConfigV2::SpeedMode enval);
 
+/** @class ModuleInfoV1
+
+  
+*/
+
+
+class ModuleInfoV1 {
+public:
+  virtual ~ModuleInfoV1();
+  /** The camera timestamp associated with the detector frame in 100 ns ticks. */
+  virtual uint64_t timestamp() const = 0;
+  /** The actual exposure time of the image in 100 ns ticks. */
+  virtual uint32_t exposureTime() const = 0;
+  /** The unique module ID number. */
+  virtual uint16_t moduleID() const = 0;
+  /** The X coordinate in the complete detector system. */
+  virtual uint16_t xCoord() const = 0;
+  /** The Y coordinate in the complete detector system. */
+  virtual uint16_t yCoord() const = 0;
+  /** The Z coordinate in the complete detector system. */
+  virtual uint16_t zCoord() const = 0;
+};
+
 /** @class ElementV1
 
   
@@ -143,6 +166,32 @@ public:
   /** The LCLS timing fiducial associated with the detector frame. */
   virtual uint32_t fiducials() const = 0;
   virtual ndarray<const uint16_t, 3> frame() const = 0;
+};
+
+/** @class ElementV2
+
+  
+*/
+
+class ConfigV1;
+class ConfigV2;
+
+class ElementV2 {
+public:
+  enum { TypeId = Pds::TypeId::Id_JungfrauElement /**< XTC type ID value (from Pds::TypeId class) */ };
+  enum { Version = 2 /**< XTC type version number */ };
+  virtual ~ElementV2();
+  /** The internal frame counter number of the detector. */
+  virtual uint64_t frameNumber() const = 0;
+  /** The LCLS timing tick associated with the detector frame. */
+  virtual uint32_t ticks() const = 0;
+  /** The LCLS timing fiducial associated with the detector frame. */
+  virtual uint32_t fiducials() const = 0;
+  /** Information about each of the modules in the detector system. */
+  virtual const Jungfrau::ModuleInfoV1& moduleInfo(uint32_t i0) const = 0;
+  virtual ndarray<const uint16_t, 3> frame() const = 0;
+  /** Method which returns the shape (dimensions) of the data returned by moduleInfo() method. */
+  virtual std::vector<int> moduleInfo_shape() const = 0;
 };
 } // namespace Jungfrau
 } // namespace Psana

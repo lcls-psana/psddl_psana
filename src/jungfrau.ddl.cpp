@@ -93,7 +93,13 @@ std::ostream& operator<<(std::ostream& str, Jungfrau::ConfigV2::SpeedMode enval)
   return str << val;
 }
 
+ModuleInfoV1::~ModuleInfoV1() {}
+
+
 ElementV1::~ElementV1() {}
+
+
+ElementV2::~ElementV2() {}
 
 } // namespace Jungfrau
 } // namespace Psana
