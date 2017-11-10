@@ -7,6 +7,9 @@
 namespace Psana {
 namespace Jungfrau {
 
+ModuleConfigV1::~ModuleConfigV1() {}
+
+
 ConfigV1::~ConfigV1() {}
 
 std::ostream& operator<<(std::ostream& str, Jungfrau::ConfigV1::GainMode enval) {
@@ -85,6 +88,49 @@ std::ostream& operator<<(std::ostream& str, Jungfrau::ConfigV2::SpeedMode enval)
     val = "Quarter";
     break;
   case Jungfrau::ConfigV2::Half:
+    val = "Half";
+    break;
+  default:
+    return str << "SpeedMode(" << int(enval) << ")";
+  }
+  return str << val;
+}
+
+ConfigV3::~ConfigV3() {}
+
+std::ostream& operator<<(std::ostream& str, Jungfrau::ConfigV3::GainMode enval) {
+  const char* val;
+  switch (enval) {
+  case Jungfrau::ConfigV3::Normal:
+    val = "Normal";
+    break;
+  case Jungfrau::ConfigV3::FixedGain1:
+    val = "FixedGain1";
+    break;
+  case Jungfrau::ConfigV3::FixedGain2:
+    val = "FixedGain2";
+    break;
+  case Jungfrau::ConfigV3::ForcedGain1:
+    val = "ForcedGain1";
+    break;
+  case Jungfrau::ConfigV3::ForcedGain2:
+    val = "ForcedGain2";
+    break;
+  case Jungfrau::ConfigV3::HighGain0:
+    val = "HighGain0";
+    break;
+  default:
+    return str << "GainMode(" << int(enval) << ")";
+  }
+  return str << val;
+}
+std::ostream& operator<<(std::ostream& str, Jungfrau::ConfigV3::SpeedMode enval) {
+  const char* val;
+  switch (enval) {
+  case Jungfrau::ConfigV3::Quarter:
+    val = "Quarter";
+    break;
+  case Jungfrau::ConfigV3::Half:
     val = "Half";
     break;
   default:
