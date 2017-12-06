@@ -561,6 +561,187 @@ public:
   virtual std::vector<int> asics_shape() const = 0;
 };
 
+/** @class Asic10kaConfigV1
+
+  
+*/
+
+
+class Asic10kaConfigV1 {
+public:
+  virtual ~Asic10kaConfigV1();
+  virtual uint8_t CompTH_DAC() const = 0;
+  virtual uint8_t CompEn_lowBit() const = 0;
+  virtual uint8_t PulserSync() const = 0;
+  virtual uint8_t pixelDummy() const = 0;
+  virtual uint16_t Pulser() const = 0;
+  virtual uint8_t Pbit() const = 0;
+  virtual uint8_t atest() const = 0;
+  virtual uint8_t test() const = 0;
+  virtual uint8_t Sab_test() const = 0;
+  virtual uint8_t Hrtest() const = 0;
+  virtual uint8_t PulserR() const = 0;
+  virtual uint8_t DM1() const = 0;
+  virtual uint8_t DM2() const = 0;
+  virtual uint8_t Pulser_DAC() const = 0;
+  virtual uint8_t Monost_Pulser() const = 0;
+  virtual uint8_t CompEn_topTwoBits() const = 0;
+  virtual uint8_t DM1en() const = 0;
+  virtual uint8_t DM2en() const = 0;
+  virtual uint8_t emph_bd() const = 0;
+  virtual uint8_t emph_bc() const = 0;
+  virtual uint8_t VREF_DAC() const = 0;
+  virtual uint8_t VrefLow() const = 0;
+  virtual uint8_t TPS_tcomp() const = 0;
+  virtual uint8_t TPS_MUX() const = 0;
+  virtual uint8_t RO_Monost() const = 0;
+  virtual uint8_t TPS_GR() const = 0;
+  virtual uint8_t S2D0_GR() const = 0;
+  virtual uint8_t PP_OCB_S2D() const = 0;
+  virtual uint8_t OCB() const = 0;
+  virtual uint8_t Monost() const = 0;
+  virtual uint8_t fastPP_enable() const = 0;
+  virtual uint8_t Preamp() const = 0;
+  virtual uint8_t PixelCB() const = 0;
+  virtual uint8_t Vld1_b() const = 0;
+  virtual uint8_t S2D_tcomp() const = 0;
+  virtual uint8_t Filter_DAC() const = 0;
+  virtual uint8_t testLVDTransmitter() const = 0;
+  virtual uint8_t tc() const = 0;
+  virtual uint8_t S2D() const = 0;
+  virtual uint8_t S2D_DAC_Bias() const = 0;
+  virtual uint8_t TPS_tcDAC() const = 0;
+  virtual uint8_t TPS_DAC() const = 0;
+  virtual uint8_t S2D0_tcDAC() const = 0;
+  virtual uint8_t S2D0_DAC() const = 0;
+  virtual uint8_t testBE() const = 0;
+  virtual uint8_t is_en() const = 0;
+  virtual uint8_t DelEXEC() const = 0;
+  virtual uint8_t DelCCKreg() const = 0;
+  virtual uint8_t RO_rst_en() const = 0;
+  virtual uint8_t SLVDSbit() const = 0;
+  virtual uint8_t FELmode() const = 0;
+  virtual uint8_t CompEnOn() const = 0;
+  virtual uint16_t RowStart() const = 0;
+  virtual uint16_t RowStop() const = 0;
+  virtual uint8_t ColumnStart() const = 0;
+  virtual uint8_t ColumnStop() const = 0;
+  virtual uint16_t chipID() const = 0;
+  virtual uint8_t S2D1_GR() const = 0;
+  virtual uint8_t S2D2_GR() const = 0;
+  virtual uint8_t S2D3_GR() const = 0;
+  virtual uint8_t trbit() const = 0;
+  virtual uint8_t S2D1_tcDAC() const = 0;
+  virtual uint8_t S2D1_DAC() const = 0;
+  virtual uint8_t S2D2_tcDAC() const = 0;
+  virtual uint8_t S2D2_DAC() const = 0;
+  virtual uint8_t S2D3_tcDAC() const = 0;
+  virtual uint8_t S2D3_DAC() const = 0;
+};
+
+/** @class Config10kaV1
+
+  
+*/
+
+
+class Config10kaV1 {
+public:
+  enum { TypeId = Pds::TypeId::Id_Epix10kaConfig /**< XTC type ID value (from Pds::TypeId class) */ };
+  enum { Version = 1 /**< XTC type version number */ };
+  virtual ~Config10kaV1();
+  virtual uint32_t version() const = 0;
+  virtual uint32_t usePgpEvr() const = 0;
+  virtual uint32_t evrRunCode() const = 0;
+  virtual uint32_t evrDaqCode() const = 0;
+  virtual uint32_t evrRunTrigDelay() const = 0;
+  virtual uint32_t epixRunTrigDelay() const = 0;
+  virtual uint32_t dacSetting() const = 0;
+  virtual uint8_t asicGR() const = 0;
+  virtual uint8_t asicAcq() const = 0;
+  virtual uint8_t asicR0() const = 0;
+  virtual uint8_t asicPpmat() const = 0;
+  virtual uint8_t asicPpbe() const = 0;
+  virtual uint8_t asicRoClk() const = 0;
+  virtual uint8_t asicGRControl() const = 0;
+  virtual uint8_t asicAcqControl() const = 0;
+  virtual uint8_t asicR0Control() const = 0;
+  virtual uint8_t asicPpmatControl() const = 0;
+  virtual uint8_t asicPpbeControl() const = 0;
+  virtual uint8_t asicR0ClkControl() const = 0;
+  virtual uint8_t prepulseR0En() const = 0;
+  virtual uint32_t adcStreamMode() const = 0;
+  virtual uint8_t testPatternEnable() const = 0;
+  virtual uint8_t SyncMode() const = 0;
+  virtual uint8_t R0Mode() const = 0;
+  virtual uint32_t acqToAsicR0Delay() const = 0;
+  virtual uint32_t asicR0ToAsicAcq() const = 0;
+  virtual uint32_t asicAcqWidth() const = 0;
+  virtual uint32_t asicAcqLToPPmatL() const = 0;
+  virtual uint32_t asicPPmatToReadout() const = 0;
+  virtual uint32_t asicRoClkHalfT() const = 0;
+  virtual uint32_t adcReadsPerPixel() const = 0;
+  virtual uint32_t adcClkHalfT() const = 0;
+  virtual uint32_t asicR0Width() const = 0;
+  virtual uint32_t adcPipelineDelay() const = 0;
+  virtual uint32_t adcPipelineDelay0() const = 0;
+  virtual uint32_t adcPipelineDelay1() const = 0;
+  virtual uint32_t adcPipelineDelay2() const = 0;
+  virtual uint32_t adcPipelineDelay3() const = 0;
+  virtual uint16_t SyncWidth() const = 0;
+  virtual uint16_t SyncDelay() const = 0;
+  virtual uint32_t prepulseR0Width() const = 0;
+  virtual uint32_t prepulseR0Delay() const = 0;
+  virtual uint32_t digitalCardId0() const = 0;
+  virtual uint32_t digitalCardId1() const = 0;
+  virtual uint32_t analogCardId0() const = 0;
+  virtual uint32_t analogCardId1() const = 0;
+  virtual uint32_t carrierId0() const = 0;
+  virtual uint32_t carrierId1() const = 0;
+  virtual uint32_t numberOfAsicsPerRow() const = 0;
+  virtual uint32_t numberOfAsicsPerColumn() const = 0;
+  virtual uint32_t numberOfRowsPerAsic() const = 0;
+  virtual uint32_t numberOfReadableRowsPerAsic() const = 0;
+  /** for epix10ka  176 */
+  virtual uint32_t numberOfPixelsPerAsicRow() const = 0;
+  /** for epix10ka 96*4 = 384 */
+  virtual uint32_t calibrationRowCountPerASIC() const = 0;
+  virtual uint32_t environmentalRowCountPerASIC() const = 0;
+  virtual uint32_t baseClockFrequency() const = 0;
+  virtual uint32_t asicMask() const = 0;
+  virtual uint32_t enableAutomaticRunTrigger() const = 0;
+  virtual uint32_t numberOf125MhzTicksPerRunTrigger() const = 0;
+  virtual uint8_t scopeEnable() const = 0;
+  virtual uint8_t scopeTrigEdge() const = 0;
+  virtual uint8_t scopeTrigChan() const = 0;
+  virtual uint8_t scopeArmMode() const = 0;
+  virtual uint16_t scopeADCThreshold() const = 0;
+  virtual uint16_t scopeTrigHoldoff() const = 0;
+  virtual uint16_t scopeTrigOffset() const = 0;
+  virtual uint16_t scopeTraceLength() const = 0;
+  virtual uint16_t scopeADCsameplesToSkip() const = 0;
+  virtual uint8_t scopeChanAwaveformSelect() const = 0;
+  virtual uint8_t scopeChanBwaveformSelect() const = 0;
+  virtual const Epix::Asic10kaConfigV1& asics(uint32_t i0) const = 0;
+  virtual ndarray<const uint16_t, 2> asicPixelConfigArray() const = 0;
+  /** Calibration row config map is one row for every two calib rows */
+  virtual ndarray<const uint8_t, 2> calibPixelConfigArray() const = 0;
+  /** Number of pixel rows in a readout unit */
+  virtual uint32_t numberOfRows() const = 0;
+  /** Number of readable pixel rows in a readout unit */
+  virtual uint32_t numberOfReadableRows() const = 0;
+  /** Number of pixel columns in a readout unit */
+  virtual uint32_t numberOfColumns() const = 0;
+  /** Number of calibration rows in a readout unit */
+  virtual uint32_t numberOfCalibrationRows() const = 0;
+  /** Number of rows in a readout unit */
+  virtual uint32_t numberOfEnvironmentalRows() const = 0;
+  /** Number of columns in a readout unit */
+  virtual uint32_t numberOfAsics() const = 0;
+  /** Method which returns the shape (dimensions) of the data returned by asics() method. */
+  virtual std::vector<int> asics_shape() const = 0;
+};
+
 /** @class ElementV1
 
   
@@ -619,6 +800,7 @@ public:
 
 class Config100aV1;
 class Config100aV2;
+class Config10kaV1;
 
 class ElementV3 {
 public:
