@@ -742,6 +742,192 @@ public:
   virtual std::vector<int> asics_shape() const = 0;
 };
 
+/** @class Config10ka
+
+  
+*/
+
+
+class Config10ka {
+public:
+  enum { _numberOfAsicsPerRow = 2 };
+  enum { _numberOfAsicsPerColumn = 2 };
+  enum { _numberOfRowsPerAsic = 176 };
+  enum { _numberOfReadableRowsPerAsic = 176 };
+  enum { _numberOfPixelsPerAsicRow = 192 };
+  enum { _calibrationRowCountPerASIC = 2 };
+  enum { _environmentalRowCountPerASIC = 1 };
+  virtual ~Config10ka();
+  /** Mimic previous Epix Config interfaces */
+  virtual uint32_t numberOfAsicsPerRow() const = 0;
+  virtual uint32_t numberOfAsicsPerColumn() const = 0;
+  virtual uint32_t numberOfRowsPerAsic() const = 0;
+  virtual uint32_t numberOfReadableRowsPerAsic() const = 0;
+  virtual uint32_t numberOfPixelsPerAsicRow() const = 0;
+  virtual uint32_t calibrationRowCountPerASIC() const = 0;
+  virtual uint32_t environmentalRowCountPerASIC() const = 0;
+  /** read-only */
+  virtual uint32_t carrierId0() const = 0;
+  /** read-only */
+  virtual uint32_t carrierId1() const = 0;
+  virtual uint32_t asicMask() const = 0;
+  virtual const Epix::Asic10kaConfigV1& asics(uint32_t i0) const = 0;
+  virtual ndarray<const uint16_t, 2> asicPixelConfigArray() const = 0;
+  virtual ndarray<const uint8_t, 2> calibPixelConfigArray() const = 0;
+  /** Interface
+Number of pixel rows in a readout unit */
+  virtual uint32_t numberOfRows() const = 0;
+  /** Number of readable pixel rows in a readout unit */
+  virtual uint32_t numberOfReadableRows() const = 0;
+  /** Number of pixel columns in a readout unit */
+  virtual uint32_t numberOfColumns() const = 0;
+  /** Number of calibration rows in a readout unit */
+  virtual uint32_t numberOfCalibrationRows() const = 0;
+  /** Number of rows in a readout unit */
+  virtual uint32_t numberOfEnvironmentalRows() const = 0;
+  /** Number of columns in a readout unit */
+  virtual uint32_t numberOfAsics() const = 0;
+  /** Method which returns the shape (dimensions) of the data returned by asics() method. */
+  virtual std::vector<int> asics_shape() const = 0;
+};
+
+/** @class PgpEvrConfig
+
+  
+*/
+
+
+class PgpEvrConfig {
+public:
+  virtual ~PgpEvrConfig();
+  virtual uint16_t enable() const = 0;
+  virtual uint8_t runCode() const = 0;
+  virtual uint8_t daqCode() const = 0;
+  virtual uint32_t runDelay() const = 0;
+};
+
+/** @class Ad9249Config
+
+  
+*/
+
+
+class Ad9249Config {
+public:
+  virtual ~Ad9249Config();
+  /** read-only */
+  virtual uint32_t chipId() const = 0;
+  virtual uint32_t devIndexMask() const = 0;
+  virtual uint32_t devIndexMaskDcoFco() const = 0;
+  virtual uint8_t extPwdnMode() const = 0;
+  virtual uint8_t intPwdnMode() const = 0;
+  virtual uint8_t chopMode() const = 0;
+  virtual uint8_t dutyCycleStab() const = 0;
+  virtual uint8_t outputInvert() const = 0;
+  virtual uint8_t outputFormat() const = 0;
+  virtual uint32_t clockDivide() const = 0;
+  virtual uint32_t userTestMode() const = 0;
+  virtual uint32_t outputTestMode() const = 0;
+  virtual uint32_t offsetAdjust() const = 0;
+  virtual ndarray<const uint32_t, 1> channelDelay() const = 0;
+  virtual uint32_t frameDelay() const = 0;
+};
+
+/** @class Config10kaQuadV1
+
+  
+*/
+
+
+class Config10kaQuadV1 {
+public:
+  virtual ~Config10kaQuadV1();
+  /** Global */
+  virtual uint32_t baseClockFrequency() const = 0;
+  virtual uint32_t enableAutomaticRunTrigger() const = 0;
+  virtual uint32_t numberOf125MhzTicksPerRunTrigger() const = 0;
+  /** AxiVersion (RO)
+SystemRegs */
+  virtual uint32_t dcdcEn() const = 0;
+  virtual uint32_t asicAnaEn() const = 0;
+  virtual uint32_t asicDigEn() const = 0;
+  virtual uint32_t ddrVttEn() const = 0;
+  virtual uint32_t trigSrcSel() const = 0;
+  /** AcqCore */
+  virtual uint32_t acqToAsicR0Delay() const = 0;
+  virtual uint32_t asicR0Width() const = 0;
+  virtual uint32_t asicR0ToAsicAcq() const = 0;
+  virtual uint32_t asicAcqWidth() const = 0;
+  virtual uint32_t asicAcqLToPPmatL() const = 0;
+  virtual uint32_t asicPPmatToReadout() const = 0;
+  virtual uint32_t asicRoClkHalfT() const = 0;
+  virtual uint8_t asicAcqForce() const = 0;
+  virtual uint8_t asicR0Force() const = 0;
+  virtual uint8_t asicPPmatForce() const = 0;
+  virtual uint8_t asicSyncForce() const = 0;
+  virtual uint8_t asicRoClkForce() const = 0;
+  virtual uint8_t asicAcqValue() const = 0;
+  virtual uint8_t asicR0Value() const = 0;
+  virtual uint8_t asicPPmatValue() const = 0;
+  virtual uint8_t asicSyncValue() const = 0;
+  virtual uint8_t asicRoClkValue() const = 0;
+  /** RdoutCore */
+  virtual uint32_t adcPipelineDelay() const = 0;
+  virtual uint32_t testData() const = 0;
+  virtual uint8_t scopeEnable() const = 0;
+  virtual uint8_t scopeTrigEdge() const = 0;
+  virtual uint8_t scopeTrigChan() const = 0;
+  virtual uint8_t scopeTrigMode() const = 0;
+  virtual uint16_t scopeADCThreshold() const = 0;
+  virtual uint16_t scopeTrigHoldoff() const = 0;
+  virtual uint16_t scopeTrigOffset() const = 0;
+  virtual uint16_t scopeTraceLength() const = 0;
+  virtual uint16_t scopeADCsamplesToSkip() const = 0;
+  virtual uint8_t scopeChanAwaveformSelect() const = 0;
+  virtual uint8_t scopeChanBwaveformSelect() const = 0;
+  virtual uint32_t scopeTrigDelay() const = 0;
+  /** Ad9249ReadoutGroup [10]
+Ad9249ConfigGroup [10] */
+  virtual const Epix::Ad9249Config& adc(uint32_t i0) const = 0;
+  /** AdcTester */
+  virtual uint32_t testChannel() const = 0;
+  virtual uint32_t testDataMask() const = 0;
+  virtual uint32_t testPattern() const = 0;
+  virtual uint32_t testSamples() const = 0;
+  virtual uint32_t testTimeout() const = 0;
+  virtual uint32_t testRequest() const = 0;
+  /** Method which returns the shape (dimensions) of the data returned by adc() method. */
+  virtual std::vector<int> adc_shape() const = 0;
+};
+
+/** @class Config10ka2MV1
+
+  
+*/
+
+
+class Config10ka2MV1 {
+public:
+  enum { TypeId = Pds::TypeId::Id_Epix10ka2MConfig /**< XTC type ID value (from Pds::TypeId class) */ };
+  enum { Version = 1 /**< XTC type version number */ };
+  enum { _numberOfElements = 16 };
+  virtual ~Config10ka2MV1();
+  virtual uint32_t numberOfElements() const = 0;
+  virtual uint32_t numberOfRows() const = 0;
+  virtual uint32_t numberOfReadableRows() const = 0;
+  virtual uint32_t numberOfColumns() const = 0;
+  virtual uint32_t numberOfCalibrationRows() const = 0;
+  virtual uint32_t numberOfEnvironmentalRows() const = 0;
+  virtual uint32_t numberOfAsics() const = 0;
+  virtual const Epix::PgpEvrConfig& evr() const = 0;
+  virtual const Epix::Config10kaQuadV1& quad(uint32_t i0) const = 0;
+  virtual const Epix::Config10ka& elemCfg(uint32_t i0) const = 0;
+  /** Method which returns the shape (dimensions) of the data returned by quad() method. */
+  virtual std::vector<int> quad_shape() const = 0;
+  /** Method which returns the shape (dimensions) of the data returned by elemCfg() method. */
+  virtual std::vector<int> elemCfg_shape() const = 0;
+};
+
 /** @class ElementV1
 
   
@@ -801,6 +987,7 @@ public:
 class Config100aV1;
 class Config100aV2;
 class Config10kaV1;
+class Config10ka;
 
 class ElementV3 {
 public:
@@ -818,6 +1005,25 @@ public:
   virtual ndarray<const uint32_t, 2> environmentalRows() const = 0;
   virtual ndarray<const uint16_t, 1> temperatures() const = 0;
   virtual uint32_t lastWord() const = 0;
+};
+
+/** @class ArrayV1
+
+  
+*/
+
+class Config10ka2MV1;
+
+class ArrayV1 {
+public:
+  enum { TypeId = Pds::TypeId::Id_Epix10kaArray /**< XTC type ID value (from Pds::TypeId class) */ };
+  enum { Version = 1 /**< XTC type version number */ };
+  virtual ~ArrayV1();
+  virtual uint32_t frameNumber() const = 0;
+  virtual ndarray<const uint16_t, 3> frame() const = 0;
+  virtual ndarray<const uint16_t, 3> calibrationRows() const = 0;
+  virtual ndarray<const uint32_t, 3> environmentalRows() const = 0;
+  virtual ndarray<const uint16_t, 1> temperatures() const = 0;
 };
 } // namespace Epix
 } // namespace Psana

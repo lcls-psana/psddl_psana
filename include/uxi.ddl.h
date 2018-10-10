@@ -46,6 +46,8 @@ public:
   virtual ndarray<const double, 1> pots() const = 0;
   /** Check if a pot is readonly. */
   virtual uint8_t potIsReadOnly(uint8_t i) const = 0;
+  /** Check if a pot was tuned. */
+  virtual uint8_t potIsTuned(uint8_t i) const = 0;
   /** calculate total number of pixels per frame. */
   virtual uint32_t numPixelsPerFrame() const = 0;
   /** calculate total number of pixels across all frames. */

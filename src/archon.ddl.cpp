@@ -26,5 +26,25 @@ std::ostream& operator<<(std::ostream& str, Archon::ConfigV1::ReadoutMode enval)
   }
   return str << val;
 }
+
+ConfigV2::~ConfigV2() {}
+
+std::ostream& operator<<(std::ostream& str, Archon::ConfigV2::ReadoutMode enval) {
+  const char* val;
+  switch (enval) {
+  case Archon::ConfigV2::Single:
+    val = "Single";
+    break;
+  case Archon::ConfigV2::Continuous:
+    val = "Continuous";
+    break;
+  case Archon::ConfigV2::Triggered:
+    val = "Triggered";
+    break;
+  default:
+    return str << "ReadoutMode(" << int(enval) << ")";
+  }
+  return str << val;
+}
 } // namespace Archon
 } // namespace Psana

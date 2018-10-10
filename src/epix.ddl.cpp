@@ -34,6 +34,21 @@ Asic10kaConfigV1::~Asic10kaConfigV1() {}
 Config10kaV1::~Config10kaV1() {}
 
 
+Config10ka::~Config10ka() {}
+
+
+PgpEvrConfig::~PgpEvrConfig() {}
+
+
+Ad9249Config::~Ad9249Config() {}
+
+
+Config10kaQuadV1::~Config10kaQuadV1() {}
+
+
+Config10ka2MV1::~Config10ka2MV1() {}
+
+
 ElementV1::~ElementV1() {}
 
 
@@ -41,6 +56,9 @@ ElementV2::~ElementV2() {}
 
 
 ElementV3::~ElementV3() {}
+
+
+ArrayV1::~ArrayV1() {}
 
 } // namespace Epix
 } // namespace Psana

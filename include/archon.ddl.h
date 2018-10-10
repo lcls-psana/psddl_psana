@@ -64,6 +64,64 @@ public:
   virtual const char* config() const = 0;
 };
 std::ostream& operator<<(std::ostream& str, Archon::ConfigV1::ReadoutMode enval);
+
+/** @class ConfigV2
+
+  Class containing configuration data for CCDs using the Archon controller.
+*/
+
+
+class ConfigV2 {
+public:
+  enum { TypeId = Pds::TypeId::Id_ArchonConfig /**< XTC type ID value (from Pds::TypeId class) */ };
+  enum { Version = 2 /**< XTC type version number */ };
+  enum { MaxConfigLines = 1<<14 };
+  enum { MaxConfigLineLength = 2048 };
+  enum ReadoutMode {
+    Single = 0,
+    Continuous = 1,
+    Triggered = 2,
+  };
+  virtual ~ConfigV2();
+  /** Readout mode of the camera, a.k.a. software vs hardware triggered. */
+  virtual Archon::ConfigV2::ReadoutMode readoutMode() const = 0;
+  /** The event code to use for exposure when software triggering the camera. */
+  virtual uint16_t exposureEventCode() const = 0;
+  /** The size of the acf file portion of the configuration. */
+  virtual uint32_t configSize() const = 0;
+  /** The count of lines to sweep before beginning a frame. */
+  virtual uint32_t preFrameSweepCount() const = 0;
+  /** The number of lines to sweep per cycle when waiting for triggers. */
+  virtual uint32_t idleSweepCount() const = 0;
+  /** The time (ms) to expose the sensor. */
+  virtual uint32_t integrationTime() const = 0;
+  /** The time (ms) to wait after exposing the sensor before reading it out. */
+  virtual uint32_t nonIntegrationTime() const = 0;
+  /** The number of frames to batch together for readout. */
+  virtual uint32_t batches() const = 0;
+  /** The number of pixels to readout from each tap. */
+  virtual uint32_t pixels() const = 0;
+  /** The number of lines to readout from each tap. */
+  virtual uint32_t lines() const = 0;
+  /** The horizontal binning setting. */
+  virtual uint32_t horizontalBinning() const = 0;
+  /** The vertical binning setting. */
+  virtual uint32_t verticalBinning() const = 0;
+  /** Number of actual pixels per tap. */
+  virtual uint32_t sensorPixels() const = 0;
+  /** Number of actual lines per tap. */
+  virtual uint32_t sensorLines() const = 0;
+  /** Number of taps for the sensor. */
+  virtual uint32_t sensorTaps() const = 0;
+  virtual uint32_t st() const = 0;
+  virtual uint32_t stm1() const = 0;
+  virtual uint32_t at() const = 0;
+  /** The contents of the acf file to use with the camera. */
+  virtual const char* config() const = 0;
+  /** Method which returns the shape (dimensions) of the data returned by config() method. */
+  virtual std::vector<int> config_shape() const = 0;
+};
+std::ostream& operator<<(std::ostream& str, Archon::ConfigV2::ReadoutMode enval);
 } // namespace Archon
 } // namespace Psana
 #endif // PSANA_ARCHON_DDL_H
