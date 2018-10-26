@@ -46,5 +46,68 @@ std::ostream& operator<<(std::ostream& str, Archon::ConfigV2::ReadoutMode enval)
   }
   return str << val;
 }
+
+ConfigV3::~ConfigV3() {}
+
+std::ostream& operator<<(std::ostream& str, Archon::ConfigV3::ReadoutMode enval) {
+  const char* val;
+  switch (enval) {
+  case Archon::ConfigV3::FreeRun:
+    val = "FreeRun";
+    break;
+  case Archon::ConfigV3::Triggered:
+    val = "Triggered";
+    break;
+  default:
+    return str << "ReadoutMode(" << int(enval) << ")";
+  }
+  return str << val;
+}
+std::ostream& operator<<(std::ostream& str, Archon::ConfigV3::Switch enval) {
+  const char* val;
+  switch (enval) {
+  case Archon::ConfigV3::Off:
+    val = "Off";
+    break;
+  case Archon::ConfigV3::On:
+    val = "On";
+    break;
+  default:
+    return str << "Switch(" << int(enval) << ")";
+  }
+  return str << val;
+}
+std::ostream& operator<<(std::ostream& str, Archon::ConfigV3::BiasChannelId enval) {
+  const char* val;
+  switch (enval) {
+  case Archon::ConfigV3::NV4:
+    val = "NV4";
+    break;
+  case Archon::ConfigV3::NV3:
+    val = "NV3";
+    break;
+  case Archon::ConfigV3::NV2:
+    val = "NV2";
+    break;
+  case Archon::ConfigV3::NV1:
+    val = "NV1";
+    break;
+  case Archon::ConfigV3::PV1:
+    val = "PV1";
+    break;
+  case Archon::ConfigV3::PV2:
+    val = "PV2";
+    break;
+  case Archon::ConfigV3::PV3:
+    val = "PV3";
+    break;
+  case Archon::ConfigV3::PV4:
+    val = "PV4";
+    break;
+  default:
+    return str << "BiasChannelId(" << int(enval) << ")";
+  }
+  return str << val;
+}
 } // namespace Archon
 } // namespace Psana

@@ -21,6 +21,9 @@ class ConfigV1 {
 public:
   enum { TypeId = Pds::TypeId::Id_RayonixConfig /**< XTC type ID value (from Pds::TypeId class) */ };
   enum { Version = 1 /**< XTC type version number */ };
+  enum { Row_Pixels = 3840 };
+  enum { Column_Pixels = 3840 };
+  enum { BasePixelSize = 44 };
   enum { DeviceIDMax = 40 };
   enum ReadoutMode {
     Standard = 0,
@@ -37,6 +40,20 @@ public:
   virtual uint16_t darkFlag() const = 0;
   virtual Rayonix::ConfigV1::ReadoutMode readoutMode() const = 0;
   virtual const char* deviceID() const = 0;
+  /** The width of the pixels in um. */
+  virtual uint32_t pixelWidth() const = 0;
+  /** The height of the pixels in um. */
+  virtual uint32_t pixelHeight() const = 0;
+  /** Returns the maximum possible width in pixels (a.k.a unbinned). */
+  virtual uint32_t maxWidth() const = 0;
+  /** Returns the maximum possible height in pixels (a.k.a unbinned). */
+  virtual uint32_t maxHeight() const = 0;
+  /** Calculate the frame width in pixels based on the max number of pixels and the binning. */
+  virtual uint32_t width() const = 0;
+  /** Calculate the frame height in pixels based on the max number of pixels and the binning. */
+  virtual uint32_t height() const = 0;
+  /** calculate total frame size in pixels. */
+  virtual uint32_t numPixels() const = 0;
 };
 std::ostream& operator<<(std::ostream& str, Rayonix::ConfigV1::ReadoutMode enval);
 
@@ -50,6 +67,11 @@ class ConfigV2 {
 public:
   enum { TypeId = Pds::TypeId::Id_RayonixConfig /**< XTC type ID value (from Pds::TypeId class) */ };
   enum { Version = 2 /**< XTC type version number */ };
+  enum { MX340HS_Row_Pixels = 7680 };
+  enum { MX340HS_Column_Pixels = 7680 };
+  enum { MX170HS_Row_Pixels = 3840 };
+  enum { MX170HS_Column_Pixels = 3840 };
+  enum { BasePixelSize = 44 };
   enum { DeviceIDMax = 40 };
   enum ReadoutMode {
     Unknown = 0,
@@ -68,6 +90,20 @@ public:
   virtual uint16_t darkFlag() const = 0;
   virtual Rayonix::ConfigV2::ReadoutMode readoutMode() const = 0;
   virtual const char* deviceID() const = 0;
+  /** The width of the pixels in um. */
+  virtual uint32_t pixelWidth() const = 0;
+  /** The height of the pixels in um. */
+  virtual uint32_t pixelHeight() const = 0;
+  /** Returns the maximum possible width in pixels (a.k.a unbinned). */
+  virtual uint32_t maxWidth() const = 0;
+  /** Returns the maximum possible height in pixels (a.k.a unbinned). */
+  virtual uint32_t maxHeight() const = 0;
+  /** Calculate the frame width in pixels based on the max number of pixels and the binning. */
+  virtual uint32_t width() const = 0;
+  /** Calculate the frame height in pixels based on the max number of pixels and the binning. */
+  virtual uint32_t height() const = 0;
+  /** calculate total frame size in pixels. */
+  virtual uint32_t numPixels() const = 0;
 };
 std::ostream& operator<<(std::ostream& str, Rayonix::ConfigV2::ReadoutMode enval);
 } // namespace Rayonix

@@ -11,6 +11,10 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag: V00-06-40
+2018-10-26 Daniel Damiani
+- update to pdsdata 8.9.8 for Archon, C7700, and Rayonix
+
 Tag: V00-06-31
 2016-12-16 David Schneider
 - update to pdsdata 8.7.0 for JungFrau detector
