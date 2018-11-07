@@ -43,6 +43,9 @@ PgpEvrConfig::~PgpEvrConfig() {}
 Ad9249Config::~Ad9249Config() {}
 
 
+Config10kaQuad::~Config10kaQuad() {}
+
+
 Config10kaQuadV1::~Config10kaQuadV1() {}
 
 

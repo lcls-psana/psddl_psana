@@ -833,26 +833,29 @@ public:
   virtual uint32_t frameDelay() const = 0;
 };
 
-/** @class Config10kaQuadV1
+/** @class Config10kaQuad
 
   
 */
 
 
-class Config10kaQuadV1 {
+class Config10kaQuad {
 public:
-  virtual ~Config10kaQuadV1();
+  virtual ~Config10kaQuad();
   /** Global */
   virtual uint32_t baseClockFrequency() const = 0;
   virtual uint32_t enableAutomaticRunTrigger() const = 0;
   virtual uint32_t numberOf125MhzTicksPerRunTrigger() const = 0;
-  /** AxiVersion (RO)
-SystemRegs */
+  /** AxiVersion (RO) */
+  virtual uint32_t digitalCardId0() const = 0;
+  virtual uint32_t digitalCardId1() const = 0;
+  /** SystemRegs */
   virtual uint32_t dcdcEn() const = 0;
   virtual uint32_t asicAnaEn() const = 0;
   virtual uint32_t asicDigEn() const = 0;
   virtual uint32_t ddrVttEn() const = 0;
   virtual uint32_t trigSrcSel() const = 0;
+  virtual uint32_t vguardDac() const = 0;
   /** AcqCore */
   virtual uint32_t acqToAsicR0Delay() const = 0;
   virtual uint32_t asicR0Width() const = 0;
@@ -900,6 +903,32 @@ Ad9249ConfigGroup [10] */
   virtual std::vector<int> adc_shape() const = 0;
 };
 
+/** @class Config10kaQuadV1
+
+  
+*/
+
+
+class Config10kaQuadV1 {
+public:
+  enum { TypeId = Pds::TypeId::Id_Epix10kaQuadConfig /**< XTC type ID value (from Pds::TypeId class) */ };
+  enum { Version = 1 /**< XTC type version number */ };
+  enum { _numberOfElements = 4 };
+  virtual ~Config10kaQuadV1();
+  virtual uint32_t numberOfElements() const = 0;
+  virtual uint32_t numberOfRows() const = 0;
+  virtual uint32_t numberOfReadableRows() const = 0;
+  virtual uint32_t numberOfColumns() const = 0;
+  virtual uint32_t numberOfCalibrationRows() const = 0;
+  virtual uint32_t numberOfEnvironmentalRows() const = 0;
+  virtual uint32_t numberOfAsics() const = 0;
+  virtual const Epix::PgpEvrConfig& evr() const = 0;
+  virtual const Epix::Config10kaQuad& quad() const = 0;
+  virtual const Epix::Config10ka& elemCfg(uint32_t i0) const = 0;
+  /** Method which returns the shape (dimensions) of the data returned by elemCfg() method. */
+  virtual std::vector<int> elemCfg_shape() const = 0;
+};
+
 /** @class Config10ka2MV1
 
   
@@ -920,7 +949,7 @@ public:
   virtual uint32_t numberOfEnvironmentalRows() const = 0;
   virtual uint32_t numberOfAsics() const = 0;
   virtual const Epix::PgpEvrConfig& evr() const = 0;
-  virtual const Epix::Config10kaQuadV1& quad(uint32_t i0) const = 0;
+  virtual const Epix::Config10kaQuad& quad(uint32_t i0) const = 0;
   virtual const Epix::Config10ka& elemCfg(uint32_t i0) const = 0;
   /** Method which returns the shape (dimensions) of the data returned by quad() method. */
   virtual std::vector<int> quad_shape() const = 0;
@@ -1013,6 +1042,7 @@ public:
 */
 
 class Config10ka2MV1;
+class Config10kaQuadV1;
 
 class ArrayV1 {
 public:
