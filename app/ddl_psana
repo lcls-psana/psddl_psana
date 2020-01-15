@@ -1,4 +1,5 @@
 #!@PYTHON@
+from __future__ import print_function
 
 import os
 import sys
@@ -16,7 +17,7 @@ if __name__ == "__main__":
                                                           includeHdf=False,
                                                           includeDecl=False)
 
-    for pkg, subdict in pkgdict.iteritems():
+    for pkg, subdict in pkgdict.items():
         cmd = psddlCmdStart + '-b psana -I data -E psddl_psana/include ' + \
               '-O psddl_psana/src -i psddl_psana -t Psana ' + subdict['ddlfile']
         if verbose: sys.stdout.write("executing:\n%s\n" % cmd)
