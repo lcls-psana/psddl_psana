@@ -211,6 +211,97 @@ public:
 std::ostream& operator<<(std::ostream& str, Archon::ConfigV3::ReadoutMode enval);
 std::ostream& operator<<(std::ostream& str, Archon::ConfigV3::Switch enval);
 std::ostream& operator<<(std::ostream& str, Archon::ConfigV3::BiasChannelId enval);
+
+/** @class ConfigV4
+
+  
+*/
+
+
+class ConfigV4 {
+public:
+  enum { TypeId = Pds::TypeId::Id_ArchonConfig /**< XTC type ID value (from Pds::TypeId class) */ };
+  enum { Version = 4 /**< XTC type version number */ };
+  enum { MaxConfigLines = 1<<14 };
+  enum { MaxConfigLineLength = 2048 };
+  enum ReadoutMode {
+    FreeRun = 0,
+    Triggered = 1,
+  };
+  enum Switch {
+    Off = 0,
+    On = 1,
+  };
+  enum BiasChannelId {
+    NV4 = -4,
+    NV3 = -3,
+    NV2 = -2,
+    NV1 = -1,
+    PV1 = 1,
+    PV2 = 2,
+    PV3 = 3,
+    PV4 = 4,
+  };
+  virtual ~ConfigV4();
+  /** Readout mode of the camera, a.k.a. software vs hardware triggered. */
+  virtual Archon::ConfigV4::ReadoutMode readoutMode() const = 0;
+  /** The state of the ccd power, a.k.a off vs on. */
+  virtual Archon::ConfigV4::Switch power() const = 0;
+  /** The event code to use for exposure when software triggering the camera. */
+  virtual uint16_t exposureEventCode() const = 0;
+  /** The size of the acf file portion of the configuration. */
+  virtual uint32_t configSize() const = 0;
+  /** The count of lines to sweep before beginning a frame. */
+  virtual uint32_t preFrameSweepCount() const = 0;
+  /** The number of lines to sweep per cycle when waiting for triggers. */
+  virtual uint32_t idleSweepCount() const = 0;
+  /** The number of lines to skip before beginning a frame. */
+  virtual uint32_t preSkipLines() const = 0;
+  /** The time (ms) to expose the sensor. */
+  virtual uint32_t integrationTime() const = 0;
+  /** The time (ms) to wait after exposing the sensor before reading it out. */
+  virtual uint32_t nonIntegrationTime() const = 0;
+  /** The number of frames to batch together for readout. */
+  virtual uint32_t batches() const = 0;
+  /** The number of pixels to readout from each tap. */
+  virtual uint32_t pixels() const = 0;
+  /** The number of lines to readout from each tap. */
+  virtual uint32_t lines() const = 0;
+  /** The horizontal binning setting. */
+  virtual uint32_t horizontalBinning() const = 0;
+  /** The vertical binning setting. */
+  virtual uint32_t verticalBinning() const = 0;
+  /** Number of actual pixels per tap. */
+  virtual uint32_t sensorPixels() const = 0;
+  /** Number of actual lines per tap. */
+  virtual uint32_t sensorLines() const = 0;
+  /** Number of taps for the sensor. */
+  virtual uint32_t sensorTaps() const = 0;
+  virtual uint32_t st() const = 0;
+  virtual uint32_t stm1() const = 0;
+  virtual uint32_t at() const = 0;
+  /** The state of the ccd bias voltage, a.k.a off vs on. */
+  virtual Archon::ConfigV4::Switch bias() const = 0;
+  /** The channel ID of the bias voltage. */
+  virtual Archon::ConfigV4::BiasChannelId biasChan() const = 0;
+  /** The bias voltage setpoint. */
+  virtual float biasVoltage() const = 0;
+  /** Version tag for the attached acf file. */
+  virtual uint32_t configVersion() const = 0;
+  /** The contents of the acf file to use with the camera. */
+  virtual const char* config() const = 0;
+  /** Calculate the frame X size in pixels based on the number of pixels per tap and the number of taps. */
+  virtual uint32_t numPixelsX() const = 0;
+  /** calculate frame Y size in pixels based on the number of lines per tap. */
+  virtual uint32_t numPixelsY() const = 0;
+  /** calculate total frame size in pixels. */
+  virtual uint32_t numPixels() const = 0;
+  /** Method which returns the shape (dimensions) of the data returned by config() method. */
+  virtual std::vector<int> config_shape() const = 0;
+};
+std::ostream& operator<<(std::ostream& str, Archon::ConfigV4::ReadoutMode enval);
+std::ostream& operator<<(std::ostream& str, Archon::ConfigV4::Switch enval);
+std::ostream& operator<<(std::ostream& str, Archon::ConfigV4::BiasChannelId enval);
 } // namespace Archon
 } // namespace Psana
 #endif // PSANA_ARCHON_DDL_H
