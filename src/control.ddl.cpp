@@ -11,7 +11,15 @@ PVControl::array() const {
   return _index != NoArray;
 }
 uint8_t
+PVControlV1::array() const {
+  return _index != NoArray;
+}
+uint8_t
 PVMonitor::array() const {
+  return _index != NoArray;
+}
+uint8_t
+PVMonitorV1::array() const {
   return _index != NoArray;
 }
 
@@ -22,6 +30,9 @@ ConfigV2::~ConfigV2() {}
 
 
 ConfigV3::~ConfigV3() {}
+
+
+ConfigV4::~ConfigV4() {}
 
 } // namespace ControlData
 } // namespace Psana

@@ -773,6 +773,38 @@ private:
   double	_fCharge2;	/**< UND:R02:IOC:16:BAT:Charge2 value in pico-columbs. */
 };
 
+/** @class BldDataPhaseCavityV1
+
+  PV names: UND:R02:IOC:16:BAT:FitTime1, UND:R02:IOC:16:BAT:FitTime2,
+                UND:R02:IOC:16:BAT:Charge1,  UND:R02:IOC:16:BAT:Charge2
+*/
+
+
+class BldDataPhaseCavityV1 {
+public:
+  enum { TypeId = Pds::TypeId::Id_PhaseCavity /**< XTC type ID value (from Pds::TypeId class) */ };
+  enum { Version = 1 /**< XTC type version number */ };
+  BldDataPhaseCavityV1(double arg__fFitTime1, double arg__fFitTime2, double arg__fCharge1, double arg__fCharge2)
+    : _fFitTime1(arg__fFitTime1), _fFitTime2(arg__fFitTime2), _fCharge1(arg__fCharge1), _fCharge2(arg__fCharge2)
+  {
+  }
+  BldDataPhaseCavityV1() {}
+  /** UND:R02:IOC:16:BAT:FitTime1 value in pico-seconds. */
+  double fitTime1() const { return _fFitTime1; }
+  /** UND:R02:IOC:16:BAT:FitTime2 value in pico-seconds. */
+  double fitTime2() const { return _fFitTime2; }
+  /** UND:R02:IOC:16:BAT:Charge1 value in pico-columbs. */
+  double charge1() const { return _fCharge1; }
+  /** UND:R02:IOC:16:BAT:Charge2 value in pico-columbs. */
+  double charge2() const { return _fCharge2; }
+  static uint32_t _sizeof() { return 32; }
+private:
+  double	_fFitTime1;	/**< UND:R02:IOC:16:BAT:FitTime1 value in pico-seconds. */
+  double	_fFitTime2;	/**< UND:R02:IOC:16:BAT:FitTime2 value in pico-seconds. */
+  double	_fCharge1;	/**< UND:R02:IOC:16:BAT:Charge1 value in pico-columbs. */
+  double	_fCharge2;	/**< UND:R02:IOC:16:BAT:Charge2 value in pico-columbs. */
+};
+
 /** @class BldDataIpimbV0
 
   Combined structure which includes Ipimb.DataV1, Ipimb.ConfigV1, and
