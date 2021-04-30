@@ -34,7 +34,10 @@ Asic10kaConfigV1::~Asic10kaConfigV1() {}
 Config10kaV1::~Config10kaV1() {}
 
 
-Config10ka::~Config10ka() {}
+Config10kaV2::~Config10kaV2() {}
+
+
+Elem10kaConfigV1::~Elem10kaConfigV1() {}
 
 
 PgpEvrConfig::~PgpEvrConfig() {}
@@ -43,13 +46,22 @@ PgpEvrConfig::~PgpEvrConfig() {}
 Ad9249Config::~Ad9249Config() {}
 
 
-Config10kaQuad::~Config10kaQuad() {}
+Quad10kaConfigV1::~Quad10kaConfigV1() {}
+
+
+Quad10kaConfigV2::~Quad10kaConfigV2() {}
 
 
 Config10kaQuadV1::~Config10kaQuadV1() {}
 
 
+Config10kaQuadV2::~Config10kaQuadV2() {}
+
+
 Config10ka2MV1::~Config10ka2MV1() {}
+
+
+Config10ka2MV2::~Config10ka2MV2() {}
 
 
 ElementV1::~ElementV1() {}
