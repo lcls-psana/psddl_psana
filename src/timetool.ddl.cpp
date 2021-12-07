@@ -61,6 +61,23 @@ std::ostream& operator<<(std::ostream& str, TimeTool::ConfigV2::Axis enval) {
   return str << val;
 }
 
+ConfigV3::~ConfigV3() {}
+
+std::ostream& operator<<(std::ostream& str, TimeTool::ConfigV3::Axis enval) {
+  const char* val;
+  switch (enval) {
+  case TimeTool::ConfigV3::X:
+    val = "X";
+    break;
+  case TimeTool::ConfigV3::Y:
+    val = "Y";
+    break;
+  default:
+    return str << "Axis(" << int(enval) << ")";
+  }
+  return str << val;
+}
+
 DataV1::~DataV1() {}
 
 std::ostream& operator<<(std::ostream& str, TimeTool::DataV1::EventType enval) {
@@ -93,6 +110,26 @@ std::ostream& operator<<(std::ostream& str, TimeTool::DataV2::EventType enval) {
     val = "Reference";
     break;
   case TimeTool::DataV2::Signal:
+    val = "Signal";
+    break;
+  default:
+    return str << "EventType(" << int(enval) << ")";
+  }
+  return str << val;
+}
+
+DataV3::~DataV3() {}
+
+std::ostream& operator<<(std::ostream& str, TimeTool::DataV3::EventType enval) {
+  const char* val;
+  switch (enval) {
+  case TimeTool::DataV3::Dark:
+    val = "Dark";
+    break;
+  case TimeTool::DataV3::Reference:
+    val = "Reference";
+    break;
+  case TimeTool::DataV3::Signal:
     val = "Signal";
     break;
   default:
