@@ -11,6 +11,9 @@ Package author: Andrei Salnikov
 Please describe any modifications that you made to the package in the
 reverse time order.
 
+Tag: V01-00-06
+2023-10-13 Daniel Damiani
+- update to pdsdata 9.4.0 for Uxi
 Tag: V01-00-05
 2021-12-07 Daniel Damiani
 - update to pdsdata 9.3.2 for TimeTool

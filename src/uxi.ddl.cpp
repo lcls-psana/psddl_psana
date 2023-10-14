@@ -10,6 +10,23 @@ namespace Uxi {
 ConfigV1::~ConfigV1() {}
 
 
+ConfigV2::~ConfigV2() {}
+
+std::ostream& operator<<(std::ostream& str, Uxi::ConfigV2::RoiMode enval) {
+  const char* val;
+  switch (enval) {
+  case Uxi::ConfigV2::Off:
+    val = "Off";
+    break;
+  case Uxi::ConfigV2::On:
+    val = "On";
+    break;
+  default:
+    return str << "RoiMode(" << int(enval) << ")";
+  }
+  return str << val;
+}
+
 FrameV1::~FrameV1() {}
 
 } // namespace Uxi
