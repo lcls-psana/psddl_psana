@@ -139,6 +139,49 @@ std::ostream& operator<<(std::ostream& str, Jungfrau::ConfigV3::SpeedMode enval)
   return str << val;
 }
 
+ConfigV4::~ConfigV4() {}
+
+std::ostream& operator<<(std::ostream& str, Jungfrau::ConfigV4::GainMode enval) {
+  const char* val;
+  switch (enval) {
+  case Jungfrau::ConfigV4::Normal:
+    val = "Normal";
+    break;
+  case Jungfrau::ConfigV4::FixedGain1:
+    val = "FixedGain1";
+    break;
+  case Jungfrau::ConfigV4::FixedGain2:
+    val = "FixedGain2";
+    break;
+  case Jungfrau::ConfigV4::ForcedGain1:
+    val = "ForcedGain1";
+    break;
+  case Jungfrau::ConfigV4::ForcedGain2:
+    val = "ForcedGain2";
+    break;
+  case Jungfrau::ConfigV4::HighGain0:
+    val = "HighGain0";
+    break;
+  default:
+    return str << "GainMode(" << int(enval) << ")";
+  }
+  return str << val;
+}
+std::ostream& operator<<(std::ostream& str, Jungfrau::ConfigV4::SpeedMode enval) {
+  const char* val;
+  switch (enval) {
+  case Jungfrau::ConfigV4::Quarter:
+    val = "Quarter";
+    break;
+  case Jungfrau::ConfigV4::Half:
+    val = "Half";
+    break;
+  default:
+    return str << "SpeedMode(" << int(enval) << ")";
+  }
+  return str << val;
+}
+
 ModuleInfoV1::~ModuleInfoV1() {}
 
 
